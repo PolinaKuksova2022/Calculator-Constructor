@@ -1,0 +1,72 @@
+.btn{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: $main-color;
+    border: .0625rem solid $border-color;
+    border-radius: .375rem;
+    color: $number-color;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: .875rem;
+    line-height: .9375rem;
+}
+
+.btn-action{
+    &:hover{
+        border: .125rem solid $selection-color;
+    }
+    &:active{
+        border: .125rem solid $selection-color;
+        background: $selection-color;
+    }
+}
+
+.btn-mode {
+    padding: .6563rem .75rem .6563rem 2.5rem;
+    height: 2.25rem;
+
+    text-align: right;
+    color: $text-color !important;
+}
+
+.runtime{
+    position: relative;
+    &::before{
+        position: absolute;
+        content: '';
+        left: .75rem;
+        width: 1.25rem;
+        height: 1.25rem;
+        -webkit-mask-image: url(../../assets/Img/eye.svg);
+        -webkit-mask-size: contain;
+        -webkit-mask-repeat: no-repeat;
+        -webkit-mask-position-y: center;
+        background-color: $selection-color;
+    }
+}
+
+.constructor{
+    position: relative;
+    &::before{
+        position: absolute;
+        content: '';
+        width: 1.25rem;
+        height: 1.25rem;
+        left: .75rem;
+        -webkit-mask-image: url(../../assets/Img/anglebr.svg);
+        -webkit-mask-size: contain;
+        -webkit-mask-repeat: no-repeat;
+        -webkit-mask-position-y: center;
+        background-color: $selection-color;
+    }
+}
+
+.no-active {
+    background-color: $background-color;
+    border: none;
+    &::before{
+        background-color: $text-color;
+    }
+}

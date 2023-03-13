@@ -1,0 +1,9 @@
+.mode{
+    display: flex;
+    flex-direction: row;
+    background-color: $background-color;
+    border-radius: .375rem;
+    height: 2.375rem;
+    align-self: end;
+    padding: .0625rem;
+}

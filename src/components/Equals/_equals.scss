@@ -1,0 +1,11 @@
+.equals{
+    height: 4.5rem;
+    @extend %wrapper;
+}
+
+.btn-equals{
+    width: 100%;
+    height: 100%;
+    background: $selection-color;
+    color: $main-color;
+}

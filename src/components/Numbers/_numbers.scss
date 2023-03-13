@@ -1,0 +1,12 @@
+.numbers{
+    height: 14rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    grid-gap: .5rem;
+    @extend %wrapper;
+}
+
+.zero{
+    grid-column: 1 / 3;
+}
