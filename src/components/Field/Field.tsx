@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { ReactElement, useEffect, useState } from 'react';
 import '../Style/main.scss';
 import { ModeSelector, ModeType } from '../ModeSelector/ModeSelector';
 import { Constructor } from '../Constructor/Constructor';
@@ -17,23 +17,26 @@ export interface TElement{
 export const Field = () => {
 
     const [mode, setMode] = useState<ModeType>(ModeType.Construct);
-    
-    const  elements: TElement[] = [
-        {id: 1, name: <Scoreboard key={1}/>}, 
-        {id: 2, name:<Toolbar key={2}/>}, 
-        {id: 3, name:<Numbers key={3}/>}, 
-        {id: 4, name:<Equals key={4}/>}
-    ]
 
+    const  elements: TElement[] = [
+        {id: 1, name: <Scoreboard key={1} mode={mode}/>}, 
+        {id: 2, name:<Toolbar key={2} mode={mode}/>}, 
+        {id: 3, name:<Numbers key={3} mode={mode}/>}, 
+        {id: 4, name:<Equals key={4} mode={mode}/>}
+    ]
+    console.log('in field', mode);
     const [constructElements, setConstructElements] = useState<TElement[]>(elements);
     const [runtimeElements, setRuntimeElements] = useState<TElement[]>([]);
 
+    useEffect(() => {
+        const newEl = runtimeElements.map<TElement>(({id, name}) => {
+            return {id, name: React.cloneElement(name, {mode})}
+        });
+        setRuntimeElements(newEl);
+    }, [mode])
+
     const onDragEnd = (result: DropResult) => {
         const { destination, source } = result;
-    
-        // console.log(result);
-        // console.log(constructElements);
-        // console.log(runtimeElements);
     
         if (!destination) {
           return;
@@ -88,7 +91,6 @@ export const Field = () => {
                     {(provided, snapshot) => (
                         <div
                         ref={provided.innerRef}
-                        style={{ backgroundColor: snapshot.isDraggingOver ? '$main-color' : '#F0F9FF' }}
                         {...provided.droppableProps}
                         >
                             <Runtime isRuntimeEnable={mode == ModeType.Runtime} runtimeElements={runtimeElements} setRuntimeElements={setRuntimeElements}/>

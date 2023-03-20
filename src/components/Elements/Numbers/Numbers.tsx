@@ -1,8 +1,10 @@
 import React from 'react';
 import '../../Style/main.scss';
 import { Button } from '../../Button/Button';
+import { TElementsMode } from '../TElementMode';
+import { ModeType } from '../../ModeSelector/ModeSelector';
 
-export const Numbers = () => {
+export const Numbers = ({ mode }: TElementsMode) => {
     const numbers = [
         [7, 8, 9],
         [4, 5, 6],
@@ -20,7 +22,9 @@ export const Numbers = () => {
                     type={btn === 0 ? 'btn btn-action zero' : 'btn btn-action'}
                     onClick={() =>
                         {
-                            console.log(`${btn} clicked!`);
+                            mode == ModeType.Construct 
+                            ?  console.log(`= Construct!`)
+                            : console.log('= runtime');
                         }
                     }
                 >

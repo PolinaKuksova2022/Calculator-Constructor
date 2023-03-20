@@ -1,8 +1,9 @@
 import React from 'react';
 import '../../Style/main.scss';
 import { Button } from '../../Button/Button';
+import { TElementsMode } from '../TElementMode';
 
-export const Toolbar = () => {
+export const Toolbar = ({ mode }: TElementsMode) => {
     const tools = ['/', 'х', '+', '-'];
     
     return <div
