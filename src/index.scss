@@ -1,5 +1,5 @@
 html {
-    font-size: 16px;
+    font-size: 20px;
   }
   
   body {
@@ -24,9 +24,9 @@ html {
     box-sizing: border-box;
   }
   
-  @media (max-width: 1600px) {
+  @media (max-width: 1200px) {
     html {
-      font-size: calc(100vw / 1000) * 16;
+      font-size: calc(100vw / 1200) * 20;
     }
   }
   

@@ -1,6 +1,6 @@
 import React from 'react';
-import '../Style/main.scss';
-import { Button } from '../Button/Button';
+import '../../Style/main.scss';
+import { Button } from '../../Button/Button';
 
 export const Numbers = () => {
     const numbers = [
@@ -10,7 +10,9 @@ export const Numbers = () => {
         [0, ','],
     ];
     
-    return <div className='numbers'>
+    return <div
+            className='numbers'
+        >
         {numbers.flat().map((btn, i) => {
             return(
                 <Button

@@ -1,11 +1,13 @@
 import React from 'react';
-import '../Style/main.scss';
-import { Button } from '../Button/Button';
+import '../../Style/main.scss';
+import { Button } from '../../Button/Button';
 
 export const Toolbar = () => {
     const tools = ['/', 'х', '+', '-'];
     
-    return <div className='toolbar'>
+    return <div
+            className='toolbar'
+        >
         {tools.map((btn, i) => {
             return(
                 <Button

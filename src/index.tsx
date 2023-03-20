@@ -10,10 +10,12 @@ const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
-  <React.StrictMode>
+  <>
     <Header />
-    <PageCalculator />
+      <>
+        <PageCalculator />
+      </>
     <Footer />
-  </React.StrictMode>
+  </>
 );
 reportWebVitals();

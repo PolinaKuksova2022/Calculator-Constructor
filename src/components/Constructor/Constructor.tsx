@@ -1,15 +1,39 @@
-import React, { useState } from 'react';
+import React from 'react';
 import '../Style/main.scss';
-import { Scoreboard } from '../Scoreboard/Scoreboard';
-import { Toolbar } from '../Toolbar/Toolbar';
-import { Numbers } from '../Numbers/Numbers';
-import { Equals } from '../Equals/Equals';
+import { Draggable, Droppable } from "react-beautiful-dnd";
+import { TElement } from '../Field/Field';
 
-export const Constructor = () => {
-    return <div className='constructor-panel'>
-        <Scoreboard/>
-        <Toolbar/>
-        <Numbers/>
-        <Equals/>
-    </div>;
+export interface ConstructorProps {
+    isConstructEnable: boolean,
+    constructElements:  TElement[],
+    setConstructElements: React.Dispatch<React.SetStateAction<TElement[]>>,
+}
+
+export const Constructor = ({ isConstructEnable, constructElements, setConstructElements } : ConstructorProps) => {
+    return <>
+        { isConstructEnable ? 
+            <div className='constructor-panel'>
+            { constructElements.map((i, index) => 
+                    <Draggable 
+                        draggableId={i.id.toString()} 
+                        key={i.id} 
+                        index={index}
+                        isDragDisabled={false}
+                    >
+                        {(provided, snapshot) => (
+                            <div
+                                ref={provided.innerRef}
+                                {...provided.draggableProps}
+                                {...provided.dragHandleProps}
+                            >
+                                {i.name}
+                            </div>
+                        )}
+                    </Draggable>
+                )}
+            </div>
+        : 
+            ''
+        }
+    </>;
 }
