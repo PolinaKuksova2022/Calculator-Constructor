@@ -8,6 +8,7 @@ import { Scoreboard } from '../Elements/Scoreboard/Scoreboard';
 import { Toolbar } from '../Elements/Toolbar/Toolbar';
 import { Numbers } from '../Elements/Numbers/Numbers';
 import { Equals } from '../Elements/Equals/Equals';
+import { CalcProvider } from '../../CalcProvider/CalcProvider';
 
 export interface TElement{
     id: number;
@@ -42,7 +43,7 @@ export const Field = () => {
           return;
         }
 
-        // from constructor to runtime
+        // dnd from constructor to runtime
         if (source.droppableId === "constructor" 
             && destination.droppableId === "runtime") {
                 constructElements[source.index].id == 1 
@@ -56,7 +57,7 @@ export const Field = () => {
             setConstructElements(constructElements);
         }
 
-        // from runtime to runtime
+        //dnd from runtime to runtime
         if (source.droppableId === "runtime" 
             && destination.droppableId === "runtime"
             //  move into place Scoreboard Disabled
@@ -93,7 +94,9 @@ export const Field = () => {
                         ref={provided.innerRef}
                         {...provided.droppableProps}
                         >
-                            <Runtime isRuntimeEnable={mode == ModeType.Runtime} runtimeElements={runtimeElements} setRuntimeElements={setRuntimeElements}/>
+                            <CalcProvider>
+                                <Runtime isRuntimeEnable={mode == ModeType.Runtime} runtimeElements={runtimeElements} setRuntimeElements={setRuntimeElements}/>
+                            </CalcProvider>
                             {provided.placeholder}
                         </div>
                     )}
