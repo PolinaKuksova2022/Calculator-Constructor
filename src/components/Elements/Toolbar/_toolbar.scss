@@ -1,7 +1,0 @@
-.toolbar{
-    height: 3.5rem;
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-gap: .5rem;
-    @extend %wrapper;
-}
